@@ -8,9 +8,10 @@ RUN django-admin.py startproject django_project /var/www/Demo_DevOps/
 COPY ./000-default.conf /etc/apache2/sites-available/
 COPY ./apache2.conf /etc/apache2/
 COPY ./settings.py django_project/
-EXPOSE 80 8000
+EXPOSE 80 
+EXPOSE 8000
 RUN service apache2 restart
 RUN python3 manage.py migrate
-CMD python3 manage.py runserver 0.0.0.0:8000
+CMD python3 manage.py runserver 0.0.0.0:8000 --noreload
 
 
