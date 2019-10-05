@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  django-apache2:
+    build: .
+    #    container_name: django-apache2_latest
+    ports:
+      - '80:8000'
+    depends_on:
+      - "db"
+    links:
+      - "db"
+
+
+  db:
+    build:
+      context: .
+      dockerfile: postgres_dockerfile
+      #    container_name: postgres_db_latest
+    ports:
+      - '5432:5432'
+    hostname: db
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=myproject

@@ -1,0 +1,6 @@
+FROM postgres:latest
+COPY dbexport.pgsql /docker-entrypoint-initdb.d/
+COPY db_init.sh /docker-entrypoint-initdb.d/
+EXPOSE 5432
+#RUN psql -U postgres myproject < /docker-entrypoint-initdb.d/dbexport.pgsql
+
